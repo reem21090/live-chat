@@ -1,0 +1,11 @@
+db.createCollection( "login",
+   {
+      validator: { $and:
+         [
+            { username: { $type: "string" } },
+            { password: { $type: "string" } },
+            { userid: { $type: "string" } }
+         ]
+      }
+   }
+)
