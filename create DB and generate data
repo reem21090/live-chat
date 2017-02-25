@@ -1,0 +1,18 @@
+1- create database
+use chatGame
+> db.createCollection("status",{validator:{$and:[{stat:{$type:"bool"}}, {userId:{$type:"string"}}]}})
+>db.createCollection("user",{validator:{$and:[{userName:{$type:"string"}}, {image:{$type:"string"}}]}})
+> db.createCollection("login",{validator:{$and:[{userName:{$type:"string"}},{password:{$type:"string"}},{userId:{$type:"string"}}]}})
+> db.createCollection("groups",{validator:{$and:[{groupName:{$type:"string"}},{groupMember:{$type:"object" }}, {image:{$type:"string"}}]}})
+2- insert data
+
+>for(i=0;i<20;i+=2) db.status.insert({stat:true, userId:"id"+i} )
+>for(i=1;i<20;i+=2) db.status.insert({stat:false,userId:"id"+i})
+
+>for(i=0;i<20;i++) db.user.insert({_id:i, userName:"user"+i,password:"a"+i+"b"+i, image:"/home/reem/Desktop/python/python/Day1/pullDaay1/Pull Lab/index.png" })
+
+>for(i=0;i<5;i++) db.groups.insert({_id:i, groupName:"group"+i,groupMember:{"user":"id"+i ,"userStat":"owner"}, image:"/home/reem/Desktop/python/python/Day1/pullDaay1/Pull Lab/indexHeavy.png"})
+> for(i=5;i<11;i++) db.groups.insert({_id:i, groupName:"group"+(i-5),groupMember:{"user":"id"+i ,"userStat":"joined"}, image:"/home/reem/Desktop/python/python/Day1/pullDaay1/Pull Lab/indexHeavy.png"})
+>for(i=11;i<16;i++) db.groups.insert({_id:i, groupName:"group"+(i-11),groupMember:{"user":"id"+i ,"userStat":"append"}, image:"/home/reem/Desktop/python/python/Day1/pullDaay1/Pull Lab/indexHeavy.png"})
+
+>for(i=0;i<20;i++) db.login.insert({userName:"user"+i,password:"a"+i+"b"+i , userId:"id"+i})
