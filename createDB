@@ -1,0 +1,4 @@
+> db.createCollection("status",{validator:{stat:{$type:"bool"}}})
+>db.createCollection("user",{validator:{$and:[{userName:{$type:"string"}}, {password:{$type:"string"}}, {image:{$type:"string"}}]}})
+> db.createCollection("login",{validator:{$and:[{userName:{$type:"string"}},{password:{$type:"string"}}]}})
+> db.createCollection("group",{validator:{$and:[{groupName:{$type:"string"}},{groupMember:{$type:"object" }}]}})
